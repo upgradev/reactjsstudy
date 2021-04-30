@@ -9,7 +9,7 @@ const ShortCircuit = () => {
 
   return (
     <>
-      <h2>short circuit</h2>
+      <h2>short circuit test</h2>
       {/* <h1> {firstValue} </h1>
       <h1> Value: {secondValue}</h1> */}
       {/* {if(){
