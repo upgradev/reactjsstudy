@@ -1,31 +1,7 @@
 import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
 import { data } from "../../../data";
-// reducer function
-
-const reducer = (state, action) => {
-  console.log(state, action);
-  const newPeople = [...state.people, action.payload]
-  if (action.type === "ADD_ITEM") {
-    return {
-      ...state,
-      people: newPeople,
-      isModalOpen: true,
-      modalContent: "Item add",
-    };
-  }
-  if (action.type === "NO_VALUE") {
-    return {...state, isModalOpen: true, modalContent: "please enter value"}
-  }
-
-  if(action.type === "CLOSE_MODAL"){
-    return {...state, isModalOpen: false}
-  }
-
-  return state;
-
-  throw new Error("no matching action type");
-};
+import { reducer } from "./reducer";
 
 const defaultState = {
   people: [],
@@ -44,7 +20,7 @@ const Index = () => {
     if (name) {
       const newItem = { id: new Date().getTime().toString(), name };
       dispatch({ type: "ADD_ITEM", payload: newItem });
-      setName("")
+      setName("");
       // setShowModal(true);
       // setPeople([
       //   ...people,
@@ -58,15 +34,17 @@ const Index = () => {
   };
 
   const closeModal = () => {
-    dispatch({type: "CLOSE_MODAL"})
-  }
+    dispatch({ type: "CLOSE_MODAL" });
+  };
 
   return (
     <>
       <h2>useReducer</h2>
 
       {/* {showModal && <Modal />} */}
-      {state.isModalOpen && <Modal closeModal={closeModal} modalContent={state.modalContent} />}
+      {state.isModalOpen && (
+        <Modal closeModal={closeModal} modalContent={state.modalContent} />
+      )}
       <form onSubmit={handleSubmit} className="form">
         <div>
           <input
@@ -79,8 +57,15 @@ const Index = () => {
       </form>
       {state.people.map((person) => {
         return (
-          <div key={person.id}>
+          <div key={person.id} className="item">
             <h4>{person.name}</h4>
+            <button
+              onClick={() =>
+                dispatch({ type: "REMOVE_ITEM", payload: person.id })
+              }
+            >
+              remove
+            </button>
           </div>
         );
       })}
