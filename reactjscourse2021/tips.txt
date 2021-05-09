@@ -1,2 +1,11 @@
 icons
 yarn add react-icons
+
+-------json-server
+install: https://github.com/typicode/json-server
+edit file package.json and add line below
+"server": "json-server --watch db.json --port 5000" and run command:
+yarn run server
+
+----------router
+yarn add react-router-dom
