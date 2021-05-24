@@ -1,2 +1,8 @@
 ----------------semantic ui
 https://cdnjs.com/libraries/semantic-ui
+
+---------------- generate fake id
+yarn add uuidv4
+
+---------------- route
+yarn add react-router-dom
