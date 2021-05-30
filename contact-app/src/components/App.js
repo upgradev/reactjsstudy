@@ -5,6 +5,7 @@ import AddContact from "./AddContact";
 import ContactList from "./ContactList";
 import { uuid } from "uuidv4";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ContactDetail from "./ContactDetail";
 
 function App() {
   // const contacts = [
@@ -48,8 +49,32 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/add" component={AddContact} />
-          <Route path="/" component={ContactList} />
+          <Route
+            path="/"
+            render={(props) => (
+              <ContactList
+                {...props}
+                contacts={contacts}
+                getContactId={removeContactHandle}
+              />
+            )}
+            // component={() => (
+            //   <ContactList
+            //     contacts={contacts}
+            //     getContactId={removeContactHandle}
+            //   />
+            // )}
+            exact
+          />
+          <Route
+            path="/add"
+            render={(props) => (
+              <AddContact {...props} addContactHandle={addContactHandle} />
+            )}
+            // component={() => <AddContact addContactHandle={addContactHandle} />}
+          />
+
+          <Route path="/contact/:id" component={ContactDetail} />
         </Switch>
 
         {/* <AddContact addContactHandle={addContactHandle} /> */}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function AddContact({ addContactHandle }) {
+
+function AddContact({ history, addContactHandle }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -13,6 +14,7 @@ function AddContact({ addContactHandle }) {
     addContactHandle({ name, email });
     setName("");
     setEmail("");
+    history.push("/")
   };
 
   return (
