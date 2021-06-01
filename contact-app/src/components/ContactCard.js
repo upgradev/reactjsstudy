@@ -19,6 +19,12 @@ const ContactCard = ({ contact, clickHandle }) => {
         style={{ color: "red" }}
         onClick={() => clickHandle(id)}
       ></i>
+      <Link to={{ pathname: `/edit`, state: { contact: contact } }}>
+        <i
+          className="edit alternate outline icon"
+          style={{ color: "blue", marginTop: "7px", marginLeft: "10px" }}
+        ></i>
+      </Link>
     </div>
   );
 };
