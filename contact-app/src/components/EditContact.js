@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditContact(props, { history, updateContactHandle }) {
+function EditContact(props,{ history, updateContactHandle}) {
   const [name, setName] = useState(props.location.state.contact.name);
   const [email, setEmail] = useState(props.location.state.contact.email);
   const [id, setId] = useState(props.location.state.contact.id);
@@ -11,11 +11,11 @@ function EditContact(props, { history, updateContactHandle }) {
       alert("all the fields are mandatory");
       return;
     }
-    
-    updateContactHandle({ id, name, email });
-    setName("");
-    setEmail("");
-    history.push("/");
+    console.log(updateContactHandle({ id, name, email }));
+    // updateContactHandle({ id, name, email });
+    // setName("");
+    // setEmail("");
+    // history.push("/");
   };
 
   return (

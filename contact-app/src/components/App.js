@@ -111,7 +111,7 @@ function App() {
             render={(props) => (
               <EditContact
                 {...props}
-                updateContactHandle={updateContactHandle}
+                updateContactHandle={e => this.updateContactHandle(e)}
               />
             )}
           />
